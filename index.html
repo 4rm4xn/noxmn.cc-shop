@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NOXMN CC SHOP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --main-bg: #111417;
+      --panel-bg: #181b20;
+      --section-bg: #23272f;
+      --accent: #10e2a5;
+      --text-soft: #b6b8c3;
+      --radius: 14px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.2);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    body {
+      background: var(--main-bg);
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--panel-bg);
+      padding: 32px 0 16px 0;
+      text-align: center;
+      position: relative;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .logo {
+      font-size: 2.3rem;
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: block;
+      text-align: left;
+    }
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 1.05rem;
+      margin-top: 8px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.8;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      opacity: 1;
+    }
+    .subtitle {
+      color: var(--text-soft);
+      font-size: 18px;
+      margin-bottom: 0;
+      letter-spacing: 0.02em;
+    }
+    .main-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 8px;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+    .main-desc {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    /* Courses Section */
+    .section {
+      background: var(--main-bg);
+      padding: 0 0 20px 0;
+    }
+    .section-title {
+      color: var(--accent);
+      font-size: 2rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 40px 0 24px 0;
+      letter-spacing: 0.02em;
+    }
+    .course-list {
+      display: flex;
+      justify-content: center;
+      gap: 38px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .course-card {
+      background: var(--section-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-width: 320px;
+      max-width: 370px;
+      padding: 28px 36px 26px 36px;
+      margin: 0 8px 18px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .course-name {
+      color: var(--accent);
+      font-size: 1.23rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .course-includes {
+      margin: 0;
+      color: #fff;
+      text-align: left;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+    .course-includes strong {
+      color: #fff;
+      font-size: 1.07rem;
+    }
+    .buy-btn {
+      padding: 10px 28px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .buy-btn:hover {
+      background: #08c286;
+    }
+
+    /* Cards Section */
+    .cards-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+    .card-panel {
+      background: var(--section-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-width: 260px;
+      max-width: 290px;
+      padding: 30px 28px 24px 28px;
+      text-align: center;
+      margin: 0 8px 18px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-title {
+      color: var(--accent);
+      font-size: 1.18rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .card-info {
+      color: #fff;
+      text-align: left;
+      margin: 0 0 10px 0;
+      font-size: 0.99rem;
+    }
+    .card-info b {
+      color: #fff;
+    }
+    .card-panel .buy-btn {
+      margin-top: 15px;
+      width: 120px;
+      padding: 8px 0;
+      font-size: 1rem;
+    }
+
+    /* Payment Section */
+    .payment-section {
+      background: var(--main-bg);
+      margin: 0;
+      padding-bottom: 50px;
+    }
+    .pay-title {
+      color: var(--accent);
+      font-size: 2rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 30px 0 18px 0;
+      letter-spacing: 0.02em;
+    }
+    .pay-desc {
+      text-align: center;
+      color: #fff;
+      font-size: 1.13rem;
+      margin-bottom: 16px;
+    }
+    .pay-method-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    .pay-address {
+      background: var(--section-bg);
+      color: var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 24px 15px 24px;
+      margin: 0 auto;
+      font-size: 1.09rem;
+      font-weight: bold;
+      word-break: break-all;
+      box-shadow: var(--shadow);
+    }
+    .pay-address b {
+      color: #fff;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* Modal Buy Panel */
+    #modalOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-panel {
+      background: var(--section-bg);
+      color: #fff;
+      padding: 32px 28px 20px 28px;
+      border-radius: 12px;
+      min-width: 340px;
+      max-width: 95vw;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+    }
+    .wallet-address {
+      display: inline-block;
+      margin: 6px 0 12px 0;
+      font-family: monospace;
+      background: var(--panel-bg);
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      word-break: break-all;
+      color: var(--accent);
+    }
+    .payment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .payment-form label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    .payment-form input[type="text"],
+    .payment-form input[type="email"] {
+      margin-top: 4px;
+      padding: 6px;
+      border-radius: 3px;
+      border: 1px solid #333;
+      background: #1b1e24;
+      color: #fff;
+    }
+    .payment-form input[type="file"] {
+      margin-top: 4px;
+      color: #fff;
+    }
+    .send-btn {
+      background: var(--accent);
+      color: #111;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0;
+      margin-top: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    /* Footer */
+    footer {
+      color: #666;
+      background: var(--panel-bg);
+      text-align: center;
+      font-size: 15px;
+      padding: 24px 0 18px 0;
+      margin-top: 0;
+    }
+    @media (max-width: 960px) {
+      .course-list, .cards-list {
+        flex-direction: column;
+        gap: 18px;
+      }
+      .course-card, .card-panel {
+        min-width: unset;
+        max-width: unset;
+        margin: 0 auto 18px auto;
+      }
+      .pay-address {
+        padding: 10px 8px;
+        font-size: 0.97rem;
+      }
+      .header-row {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 8vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-title { font-size: 1.65rem; }
+      .section-title, .pay-title { font-size: 1.25rem; }
+      .container, .payment-section { padding: 0 2vw; }
+      .course-card, .card-panel { padding: 20px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <span class="logo">NOXMN CC SHOP</span>
+      <nav>
+        <a href="#courses" class="active">Courses</a>
+        <a href="#cards">Cards</a>
+        <a href="#payment">Payment</a>
+      </nav>
+    </div>
+    <div class="main-title">NOXMN CC SHOP</div>
+    <div class="main-desc">100% Trusted | No Scam | Instant Delivery</div>
+  </header>
+
+  <!-- Courses Section -->
+  <section class="section" id="courses">
+    <div class="section-title">Courses</div>
+    <div class="course-list">
+      <div class="course-card">
+        <div class="course-name">Carding Course – $30</div>
+        <div class="course-includes"><strong>Includes:</strong>
+          <ul>
+            <li>BIN Method 2025</li>
+            <li>Killing Setup Full Guide</li>
+            <li>USDT Buying via Cards</li>
+            <li>BGMI & Freefire UC Carding</li>
+            <li>All Carding Methods A to Z</li>
+          </ul>
+        </div>
+        <button class="buy-btn" 
+          data-product="Carding Course" 
+          data-price="30"
+          data-extra="Course"
+          data-desc="BIN Method 2025, Killing Setup Full Guide, USDT Buying via Cards, BGMI & Freefire UC Carding, All Carding Methods A to Z"
+        >Buy Now</button>
+      </div>
+      <div class="course-card">
+        <div class="course-name">Spamming & Setup Course – $25</div>
+        <div class="course-includes"><strong>Includes:</strong>
+          <ul>
+            <li>SMS & Email Spamming</li>
+            <li>Setup Method Guide</li>
+            <li>Binance USDT Withdraw Setup</li>
+            <li>Private Killing Methods</li>
+          </ul>
+        </div>
+        <button class="buy-btn" 
+          data-product="Spamming & Setup Course" 
+          data-price="25"
+          data-extra="Course"
+          data-desc="SMS & Email Spamming, Setup Method Guide, Binance USDT Withdraw Setup, Private Killing Methods"
+        >Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="section" id="cards">
+    <div class="section-title">Available Cards</div>
+    <div class="cards-list">
+      <div class="card-panel">
+        <div class="card-title">Visa – $20</div>
+        <div class="card-info">
+          <b>Name:</b> John D***<br>
+          <b>Email:</b> joh***@gmail.com<br>
+          <b>Phone:</b> +1 55****123<br>
+          <b>BIN:</b> 4532 75XX XXXX 1234<br>
+          <b>Balance:</b> $250+<br>
+        </div>
+        <button class="buy-btn" 
+          data-product="Visa"
+          data-price="20"
+          data-balance="250+"
+          data-extra="Card"
+          data-desc="Name: John D***, Email: joh***@gmail.com, Phone: +1 55****123, BIN: 4532 75XX XXXX 1234, Balance: $250+"
+        >Buy Now</button>
+      </div>
+      <div class="card-panel">
+        <div class="card-title">MasterCard – $30</div>
+        <div class="card-info">
+          <b>Name:</b> Alice M***<br>
+          <b>Email:</b> ali***@outlook.com<br>
+          <b>Phone:</b> +44 77****456<br>
+          <b>BIN:</b> 5255 76XX XXXX 9876<br>
+          <b>Balance:</b> $400+<br>
+        </div>
+        <button class="buy-btn" 
+          data-product="MasterCard"
+          data-price="30"
+          data-balance="400+"
+          data-extra="Card"
+          data-desc="Name: Alice M***, Email: ali***@outlook.com, Phone: +44 77****456, BIN: 5255 76XX XXXX 9876, Balance: $400+"
+        >Buy Now</button>
+      </div>
+      <div class="card-panel">
+        <div class="card-title">Visa Gold – $40</div>
+        <div class="card-info">
+          <b>Name:</b> David L***<br>
+          <b>Email:</b> dav***@yahoo.com<br>
+          <b>Phone:</b> +1 66****789<br>
+          <b>BIN:</b> 4539 82XX XXXX 4321<br>
+          <b>Balance:</b> $850+<br>
+        </div>
+        <button class="buy-btn" 
+          data-product="Visa Gold"
+          data-price="40"
+          data-balance="850+"
+          data-extra="Card"
+          data-desc="Name: David L***, Email: dav***@yahoo.com, Phone: +1 66****789, BIN: 4539 82XX XXXX 4321, Balance: $850+"
+        >Buy Now</button>
+      </div>
+      <div class="card-panel">
+        <div class="card-title">MasterCard Premium – $50</div>
+        <div class="card-info">
+          <b>Name:</b> Michael S***<br>
+          <b>Email:</b> mic***@protonmail.com<br>
+          <b>Phone:</b> +1 77****654<br>
+          <b>BIN:</b> 5454 78XX XXXX 7654<br>
+          <b>Balance:</b> $900+<br>
+        </div>
+        <button class="buy-btn" 
+          data-product="MasterCard Premium"
+          data-price="50"
+          data-balance="900+"
+          data-extra="Card"
+          data-desc="Name: Michael S***, Email: mic***@protonmail.com, Phone: +1 77****654, BIN: 5454 78XX XXXX 7654, Balance: $900+"
+        >Buy Now</button>
+      </div>
+      <div class="card-panel">
+        <div class="card-title">Binance Withdraw Card – $120</div>
+        <div class="card-info">
+          <b>Name:</b> Elite X***<br>
+          <b>Email:</b> eli***@protonmail.com<br>
+          <b>Phone:</b> +1 88****999<br>
+          <b>BIN:</b> 4111 88XX XXXX 2222<br>
+          <b>Balance:</b> Binance Withdraw Possible<br>
+        </div>
+        <button class="buy-btn" 
+          data-product="Binance Withdraw Card"
+          data-price="120"
+          data-balance="Binance Withdraw Possible"
+          data-extra="Card"
+          data-desc="Name: Elite X***, Email: eli***@protonmail.com, Phone: +1 88****999, BIN: 4111 88XX XXXX 2222, Balance: Binance Withdraw Possible"
+        >Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Section -->
+  <section class="payment-section" id="payment">
+    <div class="pay-title">Payment Method</div>
+    <div class="pay-desc">We only accept <b>USDT BEP-20</b></div>
+    <div class="pay-method-panel">
+      <div class="pay-address">
+        <b>Address:</b> 0x89cd5188f8be20b1358247c8ec1f96cac7b59adf
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Buy Panel -->
+  <div id="modalOverlay">
+    <div class="modal-panel">
+      <button class="close-btn" id="closeBtn">&times;</button>
+      <h3 style="margin-top:0;">Complete Your Purchase</h3>
+      <p id="modalProductDetails"></p>
+      <div style="margin-bottom:12px;">
+        <strong>Send Payment to:</strong><br />
+        USDT BEP-20<br />
+        <span class="wallet-address">0x89cd5188f8be20b1358247c8ec1f96cac7b59adf</span>
+      </div>
+      <form class="payment-form" id="paymentForm">
+        <label>
+          Your Name:
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Your Email:
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Payment Screenshot:
+          <input type="file" name="screenshot" accept="image/*" />
+        </label>
+        <button type="submit" class="send-btn">Send & Confirm</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 NOXMN CC SHOP. All Rights Reserved.
+  </footer>
+  <script>
+    // Modal Buy Panel Logic
+    const overlay = document.getElementById('modalOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const buyBtns = document.querySelectorAll('.buy-btn');
+    const modalProductDetails = document.getElementById('modalProductDetails');
+    buyBtns.forEach(btn => {
+      btn.onclick = function() {
+        let details = '';
+        if (btn.dataset.extra === 'Course') {
+          details = '<strong>Selected Course:</strong> ' + btn.dataset.product + ' – $' + btn.dataset.price +
+            '<br><strong>Includes:</strong><br>' + btn.dataset.desc.split(',').map(e => '• ' + e.trim()).join('<br>');
+        } else {
+          details = '<strong>Selected Card:</strong> ' + btn.dataset.product + ' – $' + btn.dataset.price +
+            '<br><strong>Details:</strong><br>' + btn.dataset.desc.split(',').map(e => '• ' + e.trim()).join('<br>');
+        }
+        modalProductDetails.innerHTML = details;
+        overlay.style.display = 'flex';
+      }
+    });
+    closeBtn.onclick = function() {
+      overlay.style.display = 'none';
+    };
+    document.getElementById('paymentForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert('Payment submitted!\nWe will verify and deliver details to your email.');
+      overlay.style.display = 'none';
+    };
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.style.display = 'none';
+    };
+    // Scroll to section on nav click
+    document.querySelectorAll('nav a').forEach(link => {
+      link.onclick = function(e) {
+        e.preventDefault();
+        const id = link.getAttribute('href').slice(1);
+        const section = document.getElementById(id);
+        if (section) section.scrollIntoView({behavior: "smooth"});
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
